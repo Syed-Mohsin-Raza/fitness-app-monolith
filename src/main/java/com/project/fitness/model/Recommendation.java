@@ -5,26 +5,31 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.UUID;
+import java.util.List;
 
 @Entity
-public class Activity {
+public class Recommendation {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @Enumerated(EnumType.STRING)
-    private ActivityType type;
+    private String type;
+
+    @Column(length = 2000)
+    private String recommendation;
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "json")
-    private Map<String, Object> additionalMetrics;
+    private List<String> improvements;
 
-    private Integer duration;
-    private Integer caloriesBurned;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "json")
+    private List<String> suggestions;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "json")
+    private List<String> safety;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

@@ -1,6 +1,5 @@
 package com.project.fitness.dto;
 
-import com.project.fitness.model.Activity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
